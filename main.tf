@@ -30,8 +30,9 @@ resource "azurerm_network_interface" "ni" {
     resource_group_name = azurerm_resource_group.rg.name
     enable_accelerated_networking = true
     ip_configuration {
-      name = azurerm_public_ip.pubip.name
+      name = "internal"
       private_ip_address_allocation = "Dynamic"
       subnet_id = azurerm_subnet.vn_snet1.id
+      public_ip_address_id = azurerm_public_ip.pubip.id 
     }  
 }
